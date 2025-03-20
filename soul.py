@@ -16,11 +16,11 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 loop = asyncio.get_event_loop()
 
-TOKEN = '7748107712:AAHMiaeRINd97AJQdrwHYSClel7qZ9x5Tkk'
+TOKEN = '7073314903:AAFKxWd-eHJA42rqXFlgpLhfWzvM6kx6OmA'
 MONGO_URI = 'mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal'
-FORWARD_CHANNEL_ID = -1002156421934
-CHANNEL_ID = -1002156421934
-error_channel_id = -1002156421934
+FORWARD_CHANNEL_ID = -1002026175994
+CHANNEL_ID = -1002026175994
+error_channel_id = -1002026175994
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -59,7 +59,7 @@ async def start_asyncio_loop():
         await asyncio.sleep(REQUEST_INTERVAL)
 
 async def run_attack_command_async(target_ip, target_port, duration):
-    process = await asyncio.create_subprocess_shell(f"./soul {target_ip} {target_port} {duration} 10")
+    process = await asyncio.create_subprocess_shell(f"./SOULCRACK {target_ip} {target_port} {duration} ")
     await process.communicate()
     bot.attack_in_progress = False
 
@@ -145,7 +145,7 @@ def handle_attack_command(message):
         if not user_data or user_data['plan'] == 0:
             bot.send_message(chat_id, "*🚫 Access Denied!*\n"  # Access Denied message
                                        "*You need to be approved to use this bot.*\n"  # Need approval message
-                                       "*Contact the owner for assistance: @SOULCRACKS.*", parse_mode='Markdown')  # Contact owner message
+                                       "*Contact the owner for assistance: @insanoic.*", parse_mode='Markdown')  # Contact owner message
             return
 
         # Check plan limits
@@ -243,11 +243,11 @@ def myinfo_command(message):
     if not user_data:
         # User not found in the database
         response = "*❌ Oops! No account information found!* \n"  # Account not found message
-        response += "*For assistance, please contact the owner: @SOULCRACKS* "  # Contact owner message
+        response += "*For assistance, please contact the owner: @insanoic* "  # Contact owner message
     elif user_data.get('plan', 0) == 0:
         # User found but not approved
         response = "*🔒 Your account is still pending approval!* \n"  # Not approved message
-        response += "*Please reach out to the owner for assistance: @SOULCRACKS* 🙏"  # Contact owner message
+        response += "*Please reach out to the owner for assistance: @insanoic* 🙏"  # Contact owner message
     else:
         # User found and approved
         username = message.from_user.username or "Unknown User"  # Default username if none provided
